@@ -1,0 +1,17 @@
+# PREPARATION ONLY. Point Render's Blueprint path here only after explicit approval.
+services:
+  - type: web
+    name: ibd-connectivity-pilot
+    runtime: docker
+    plan: free
+    region: ohio
+    numInstances: 1
+    autoDeployTrigger: "off"
+    dockerContext: .
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    maxShutdownDelaySeconds: 10
+    envVars:
+      - key: PILOT_ENV
+        value: hosted-synthetic
+# No databases, disks, secrets, environment groups, migrations or seed commands.
